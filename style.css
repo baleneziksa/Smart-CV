@@ -1,0 +1,240 @@
+
+/* تنسيق الأقسام الجديدة */
+
+.builder-card select.form-control {
+    background-color: #101a30;
+    color: #ffffff;
+    border: 1px solid #34405c;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.builder-card select.form-control:focus {
+    border-color: #6558f5;
+    box-shadow: 0 0 0 3px #6558f530;
+}
+
+.builder-card input[type="month"] {
+    color-scheme: dark;
+}
+
+.dynamic-item {
+    background: #0d1426;
+    border: 1px solid #34405c;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.dynamic-item .form-control {
+    background-color: #101a30;
+    color: white;
+}
+
+.cv-section {
+    margin-bottom: 22px;
+}
+
+.cv-section h3 {
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.resume-entry {
+    margin-bottom: 16px;
+    break-inside: avoid;
+}
+
+.resume-entry strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.resume-entry p {
+    margin-bottom: 4px;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+.resume-paper {
+    overflow-wrap: anywhere;
+}
+
+@media print {
+    .cv-section {
+        break-inside: auto;
+    }
+
+    .resume-entry {
+        break-inside: avoid;
+    }
+}
+
+/* إصلاح تصميم محرر السيرة الذاتية */
+
+body {
+    background-color: #0b1020;
+    color: #f5f7ff;
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.navbar {
+    background-color: #10172a;
+    border-bottom: 1px solid #29334d;
+    padding: 18px 0;
+}
+
+.navbar-brand {
+    color: #9b91ff;
+    font-size: 24px;
+}
+
+.text-secondary {
+    color: #aab4ca !important;
+}
+
+.builder-card {
+    background-color: #141c30;
+    border: 1px solid #29334d;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 25px;
+}
+
+.builder-card h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #34405c;
+}
+
+.form-label {
+    color: #e7eaff;
+}
+
+.form-control {
+    background-color: #0d1426;
+    border: 1px solid #34405c;
+    color: white;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.form-control:focus {
+    background-color: #0d1426;
+    color: white;
+    border-color: #6558f5;
+    box-shadow: 0 0 0 3px #6558f530;
+}
+
+.form-control::placeholder {
+    color: #7f8aa4;
+}
+
+.dynamic-item {
+    background: #0d1426;
+    border: 1px solid #34405c;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.builder-card .btn-outline-primary {
+    border-color: #6558f5;
+    color: #a69cff;
+    border-radius: 10px;
+}
+
+.builder-card .btn-outline-primary:hover {
+    background: #6558f5;
+    color: white;
+}
+
+.builder-card select.form-control {
+    background-color: #101a30;
+    color: white;
+}
+
+.main-btn {
+    background-color: #6558f5;
+    border-color: #6558f5;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.main-btn:hover {
+    background-color: #5144df;
+    border-color: #5144df;
+}
+
+.remove-btn {
+    background: #44202b;
+    color: #ff9eaa;
+    border: 1px solid #743444;
+    border-radius: 8px;
+    padding: 7px 15px;
+    margin-top: 15px;
+}
+
+.remove-btn:hover {
+    background: #713042;
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .builder-card {
+        padding: 20px 15px;
+    }
+}
+
+
+/* Smart CV: بطاقات السير الذاتية في لوحة التحكم */
+#resumeList > [class*="col-"] {
+    min-width: 0;
+}
+
+#resumeList .dashboard-card {
+    background-color: #141c30;
+    border: 1px solid #29334d;
+    border-radius: 18px;
+    padding: 22px;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+}
+
+#resumeList .dashboard-card h5 {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+    text-align: right;
+}
+
+#resumeList .dashboard-card p {
+    margin: 0;
+    text-align: right;
+}
+
+#resumeList .dashboard-card .d-flex {
+    margin-top: auto;
+    padding-top: 8px;
+    justify-content: flex-start;
+}
+
+#resumeList .dashboard-card .btn {
+    white-space: nowrap;
+}

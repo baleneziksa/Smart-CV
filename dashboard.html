@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | Smart CV</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a href="dashboard.html" class="navbar-brand fw-bold">
+                Smart CV
+            </a>
+            <a href="../Back/logout.php" class="btn btn-outline-light">
+                تسجيل الخروج
+            </a>
+        </div>
+    </nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container py-5">
+
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">لوحة التحكم</h1>
+            <p class="text-secondary">
+                ابدأ رحلتك لإنشاء سيرة ذاتية احترافية
+            </p>
+        </div>
+
+        <div class="row justify-content-center g-4">
+
+            <!-- إنشاء سيرة جديدة -->
+            <div class="col-md-5">
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">📄</div>
+                    <h3>إنشاء سيرة ذاتية</h3>
+                    <p class="text-secondary">
+                        أدخل معلوماتك الشخصية وخبراتك ومهاراتك
+                        وأنشئ سيرتك الذاتية بسهولة.
+                    </p>
+                    <a href="builder.html" class="btn btn-primary main-btn w-100">
+                        إنشاء سيرة جديدة
+                    </a>
+                </div>
+            </div>
+
+            <!-- رفع سيرة ذاتية: تحسين تجربة الاختيار والرفع -->
+            <div class="col-md-5">
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">📤</div>
+                    <h3>رفع سيرة ذاتية</h3>
+                    <p class="text-secondary">
+                        ارفع سيرتك أولًا، ثم اضغط زر «استخراج بالذكاء الاصطناعي» الموجود بالأسفل مرة واحدة.
+                        تُحفظ نتيجة الاستخراج تلقائيًا، وبعدها يمكنك تعديلها دون إعادة التحليل.
+                    </p>
+
+                    <div id="uploadDropZone" class="rounded-3 p-3 mb-3 text-center"
+                         role="button" tabindex="0" aria-label="اختر ملف السيرة الذاتية أو اسحبه هنا"
+                         style="border:2px dashed #64748b; cursor:pointer; background:rgba(148,163,184,.05);">
+                        <strong class="d-block mb-1">اسحب ملف السيرة هنا</strong>
+                        <span class="text-secondary small">أو اضغط هنا لاختياره من الجهاز</span>
+                    </div>
+
+                    <label for="resumeFile" class="form-label">ملف السيرة الذاتية</label>
+                    <input type="file" id="resumeFile" class="form-control mb-2"
+                           accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                           aria-describedby="uploadLimits uploadFileDetails">
+                    <p id="uploadLimits" class="small text-secondary mb-2">
+                        الصيغ المدعومة: PDF وDOC وDOCX — الحد الأقصى: 5 ميجابايت.
+                    </p>
+                    <p id="uploadFileDetails" class="small mb-2" aria-live="polite">
+                        لم يتم اختيار ملف بعد.
+                    </p>
+                    <button type="button" id="clearUploadBtn" class="btn btn-outline-light btn-sm mb-3" hidden>
+                        إزالة الملف المختار
+                    </button>
+
+                    <button type="button" class="btn btn-primary main-btn w-100"
+                            id="uploadBtn" disabled>
+                        رفع السيرة الذاتية
+                    </button>
+
+                    <div id="uploadProgressContainer" class="mt-3" hidden>
+                        <div class="d-flex justify-content-between small mb-1">
+                            <span id="uploadProgressLabel">جارٍ رفع الملف...</span>
+                            <span id="uploadPercent">0%</span>
+                        </div>
+                        <div class="progress" role="progressbar" aria-label="تقدم رفع الملف"
+                             aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                             id="uploadProgress" style="height:10px;">
+                            <div class="progress-bar" id="uploadProgressBar" style="width:0%"></div>
+                        </div>
+                    </div>
+
+                    <p id="uploadMessage" class="mt-3 small" role="status" aria-live="polite"></p>
+
+                    <!-- يبدأ استخراج الذكاء الاصطناعي من هنا للملف المرفوع حديثًا فقط. -->
+                    <button type="button" id="extractNewBtn"
+                            class="btn btn-outline-warning main-btn w-100 mt-2" disabled>
+                        ✨ استخراج البيانات بالذكاء الاصطناعي
+                    </button>
+                    <p id="extractNewStatus" class="small mt-2 mb-0 text-secondary"
+                       role="status" aria-live="polite">
+                        ارفع سيرة جديدة أولًا لتفعيل الزر. يستخرج البيانات مرة واحدة فقط.
+                    </p>
+                    <a id="openExtractedEditor" class="btn btn-outline-info w-100 mt-3"
+                       href="#" hidden>فتح السيرة المستخرجة للتعديل</a>
+                </div>
+            </div>
+
+            <!-- [تعديل] بطاقة لوحة الإدارة (مخفية افتراضياً) -->
+            <div class="col-md-10 mt-4 d-none" id="adminCardWrapper">
+                <div class="dashboard-card text-center" style="border: 2px solid #dc3545;">
+                    <div class="dashboard-icon">👑</div>
+                    <h3 class="text-danger">لوحة الإدارة</h3>
+                    <p class="text-secondary">
+                        إدارة المستخدمين، تعديل إعدادات الذكاء الاصطناعي، ومتابعة النظام.
+                    </p>
+                    <a href="admin.html" class="btn btn-outline-danger w-50 fw-bold mt-2">
+                        الدخول للوحة الإدارة
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="mt-5" aria-labelledby="myResumesTitle">
+            <h2 id="myResumesTitle" class="fw-bold mb-3">سيرتي الذاتية</h2>
+            <div id="resumeList" class="row g-3" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <script src="dashboard.js?v=arabic-utf8-fix-2" charset="UTF-8"></script>
+</body>
+</html>
